@@ -29,6 +29,7 @@ Route::get('/cart', [BasketsController::class, 'index'])->name('cart');
 Route::get('/remove-cart', [BasketsController::class, 'removeItem'])->name('basket.remove');
 
 Route::delete('/remove-cart-item', [BasketsController::class, 'removeCartItem'])->name('removeCartItem');
+Route::delete('/remove-cart-item', [BasketsController::class, 'removeCartItem'])->name('removeCartItemaa');
 
 
 
