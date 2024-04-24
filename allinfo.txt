@@ -1,0 +1,143 @@
+{{ $errors }} 
+
+<div class="form-group col-md-6">
+                        
+                        <label for="status">Status</label>
+                        <select class="form-control form-control-sm" id="status" name="status">
+                        <option value="active" {{ old('status', $category->status) == 'active' ? 'selected' : '' }}>Active</option>
+                        <option value="inactive" {{ old('status', $category->status) == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                        </select>
+                      </div>
+
+
+ <script>
+    $(document).ready(function(){
+        $('body').on('click','.add_variant',function(){
+            var data_id = $(this).attr('data-id');
+            var content = `<div class="row mb-4 variant_${data_id}">
+								<div class="form-group col-md-3">
+									<label for="color">Color</label>
+									<input id="color" class="form-control" type="text" name="color[]" value="{{ old('color') }}" placeholder="Color">
+									@error('color')
+									<span class="error-message">{{ $message }}</span>
+									@enderror
+								</div>
+								<div class="form-group col-md-3">
+									<label for="size">Size</label>
+									<input id="size" class="form-control" type="text" name="size[]" value="{{ old('size') }}" placeholder="Size">
+									@error('size')
+									<span class="error-message">{{ $message }}</span>
+									@enderror
+								</div>
+								<div class="form-group col-md-3">
+									<label for="quantity">Quantity</label>
+									<input id="quantity" class="form-control" type="text" name="quantity[]" value="{{ old('quantity') }}" placeholder="Quantity">
+									@error('quantity')
+									<span class="error-message">{{ $message }}</span>
+									@enderror
+								</div>
+                                <div class="form-group col-md-3">
+                                <a href="javascript:void(0)" class="remove_variant" data-id="${data_id}">Remove Variant</a>
+								</div>
+							</div>`;
+            $('.variant_box').append(content);
+            $(this).attr('data-id',(parseInt(data_id)+1));
+        });
+
+        $('body').on('click','.remove_variant',function(){
+            var data_id = $(this).attr('data-id');
+            
+            $('.variant_'+data_id).remove();
+        });
+    })
+</script>
+
+
+   <script>
+    $(document).ready(function(){
+        $('body').on('click','.add_variant',function(){
+            var data_id = $(this).attr('data-id');
+            var content = '<div class="row mb-4 variant_' + data_id + '">' +
+                                '<div class="form-group col-md-3">' +
+                                    '<label for="color">Color</label>' +
+                                    '<input id="color_' + data_id + '" class="form-control" type="text" name="color[]" value="" placeholder="Color">' +
+                                    '<span class="error-message" id="color_error_' + data_id + '"></span>' +
+                                '</div>' +
+                                '<div class="form-group col-md-3">' +
+                                    '<label for="size">Size</label>' +
+                                    '<input id="size_' + data_id + '" class="form-control" type="text" name="size[]" value="" placeholder="Size">' +
+                                    '<span class="error-message" id="size_error_' + data_id + '"></span>' +
+                                '</div>' +
+                                '<div class="form-group col-md-3">' +
+                                    '<label for="quantity">Quantity</label>' +
+                                    '<input id="quantity_' + data_id + '" class="form-control" type="text" name="quantity[]" value="" placeholder="Quantity">' +
+                                    '<span class="error-message" id="quantity_error_' + data_id + '"></span>' +
+                                '</div>' +
+                                '<div class="form-group col-md-3">' +
+                                    '<a href="javascript:void(0)" class="remove_variant" data-id="' + data_id + '">Remove Variant</a>' +
+                                '</div>' +
+                            '</div>';
+            $('.variant_box').append(content);
+            $(this).attr('data-id',(parseInt(data_id)+1));
+        });
+
+		
+    });
+
+
+</script>
+
+
+
+			<div class="col-md-4">
+				<div class="product-item">
+					<div class="product-thumb">
+                        <span class="bage">Sale</span>
+						<img class="img-responsive" src="{{ asset('public/frontend/images/shop/products/product-9.jpg') }}" alt="product-img" />
+						<div class="preview-meta">
+							<ul>
+								<li>
+									<span  data-toggle="modal" data-target="#product-modal">
+										<i class="tf-ion-ios-search-strong"></i>
+									</span>
+								</li>
+								<li>
+			                        <a href="#" ><i class="tf-ion-ios-heart"></i></a>
+								</li>
+								<li>
+									<a href="#!"><i class="tf-ion-android-cart"></i></a>
+								</li>
+							</ul>
+                      	</div>
+					</div>
+					<div class="product-content">
+						<h4><a href="product-single.html">Rainbow Shoes</a></h4>
+						<p class="price">$200</p>
+					</div>
+				</div>
+			</div>
+
+
+
+            $(document).on('click', '.product-remove', function(e) {
+
+        e.preventDefault();
+            var itemId = $(this).data('id'); 
+            $.ajax({
+                type: 'DELETE',
+                url: {{ route("cart.remove", ":id") }}'.replace(':id', itemId),
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: itemId
+                },
+                success: function(response) {
+                    
+                    $(this).closest('tr').remove();
+                   
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        
+    }); 

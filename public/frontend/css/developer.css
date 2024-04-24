@@ -1,0 +1,21 @@
+.error-message{
+    color: red;
+  
+}
+
+.product_images{
+    height: 315px!important;
+    width: 262px!important;
+
+    object-fit: contain!important;
+}
+.quantityslider{
+
+    width: 140px!important;
+    height: 34px!important;
+}
+
+.dropn-menu{
+    max-height:400px;
+    overflow:scroll; 
+ }

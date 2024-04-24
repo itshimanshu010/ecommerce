@@ -1,0 +1,19 @@
+.error-message{
+    color: red;
+    font-size: 13px;
+}
+
+.dropdown .dropdown-menu .dropdown-item:hover {
+    color: #000000!important;
+}
+
+.error-message{
+    color: red;
+    font-size: 12px;
+}
+
+
+.boxcolor{
+    height: 48px!important;
+    padding: 5px!important;
+}
