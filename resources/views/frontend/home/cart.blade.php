@@ -49,7 +49,7 @@
                         </td>
 
                         <td class="">
-                          <div id="unit-price-{{ $item->id }}">$ {{ $item->unit_price }}</div>
+                          <div id="unit-price-{{ $item->id }}">₹ {{ $item->unit_price }}</div>
                       </td>
                         
                         <td class="quantityslider">
@@ -59,7 +59,7 @@
                         </td>
 
                         <td class="">
-                          <div id="total-price-{{ $item->id }}">$ {{ $item->total }}</div>
+                          <div id="total-price-{{ $item->id }}">₹ {{ $item->total }}</div>
                       </td>
 
                         <td class="">
