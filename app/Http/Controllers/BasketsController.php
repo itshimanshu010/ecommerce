@@ -114,6 +114,24 @@ class BasketsController extends Controller
         return response()->json(['message' => 'Item removed successfully']);
     }
 
+    public function checkoutCart()
+    {
+             $cartItems = Basket::where('user_id', auth()->id())
+                                ->where('status', 'active')
+                                
+                                ->get();
+
+             foreach ($cartItems as $item) {
+                 // Retrieve the product based on the product_id stored in the basket
+                 $product = Product::findOrFail($item->product_id);
+                 // Update the cart item with the product name
+                 $item->title = $product->title;
+                 $item->image = asset('public/admin/images/product/') . '/' . $product->images;
+             }
+
+             return view('frontend.home.checkout', ['cartItems' => $cartItems]);
+    }
+
 
 
 

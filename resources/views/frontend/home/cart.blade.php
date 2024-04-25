@@ -46,7 +46,7 @@
 
                         <td class="">
                             <div class="product-info">
-                                <img width="80" src="{{  $item->image }}" alt="{{ $item->title }}" />
+                                <img width="80px" src="{{  $item->image }}" alt="{{ $item->title }}" />
                                 <a href="#!">{{ $item->title }}</a>
                             </div>
                         </td>
@@ -74,7 +74,7 @@
                     @endforeach
                 </tbody>
                 </table>
-                <a href="checkout.html" class="btn btn-main pull-right">Checkout</a>
+                <a href="{{ route('checkoutCart') }}" class="btn btn-main pull-right">Proceed to Checkout</a>
               </form>
             </div>
           </div>
