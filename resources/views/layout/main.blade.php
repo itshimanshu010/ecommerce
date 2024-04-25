@@ -202,9 +202,9 @@
 <script>
     function updateTotalPrice(itemId) {
         var quantity = $('#product-quantity-' + itemId).val(); // Get the new quantity
-        var unitPrice = parseFloat($('#unit-price-' + itemId).text().replace('$ ', '')); // Get the unit price
+        var unitPrice = parseFloat($('#unit-price-' + itemId).text().replace('₹ ', '')); // Get the unit price
         var totalPrice = quantity * unitPrice; // Calculate the total price
-        $('#total-price-' + itemId).text('$ ' + totalPrice.toFixed(2)); // Update the total price displayed in the table
+        $('#total-price-' + itemId).text('₹ ' + totalPrice.toFixed(2)); // Update the total price displayed in the table
     }
 </script>
     

@@ -24,13 +24,14 @@
   <div class="cart shopping">
     <div class="container">
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-9 col-md-offset-2">
           <div class="block">
             <div class="product-list">
               <form method="post">
                 <table class="table">
                   <thead>
                     <tr>
+                      <th class=""></th>
                       <th class="">Item Name</th>
                       <th class="">Unit Price</th>
                       <th class="">Quantity</th>
@@ -41,6 +42,8 @@
                   <tbody>
                     @foreach($cartItems as $item)
                     <tr id="product-row-{{ $item->id }}" class="">
+                      <td><input type="checkbox" name="selectedItems[]" value="{{ $item->id }}" checked></td>
+
                         <td class="">
                             <div class="product-info">
                                 <img width="80" src="{{  $item->image }}" alt="{{ $item->title }}" />
@@ -65,6 +68,8 @@
                         <td class="">
                             <a class="product-remove" href="{{ route('removeCartItem', $item->id) }}" data-id="{{ $item->id }}">Remove</a>
                         </td>
+
+                        
                     </tr>
                     @endforeach
                 </tbody>
