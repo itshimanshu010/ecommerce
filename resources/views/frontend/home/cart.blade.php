@@ -42,7 +42,9 @@
                   <tbody>
                     @foreach($cartItems as $item)
                     <tr id="product-row-{{ $item->id }}" class="">
-                      <td><input type="checkbox" name="selectedItems[]" value="{{ $item->id }}" checked></td>
+                      <td>
+                        <input type="checkbox" name="selectedItems[]" value="{{ $item->id }}" checked data-item-id="{{ $item->id }}">
+                    </td>
 
                         <td class="">
                             <div class="product-info">

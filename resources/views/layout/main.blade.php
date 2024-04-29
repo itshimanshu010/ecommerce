@@ -72,6 +72,34 @@
         });
     });
 
+    $(document).ready(function() {
+    $('input[type="checkbox"]').change(function() {
+        var itemId = $(this).val();
+        var isChecked = $(this).is(':checked');
+        updateChecked(itemId, isChecked);
+    });
+
+    function updateChecked(itemId, isChecked) {
+    var checkedValue = isChecked ? 1 : 0; // Convert isChecked to 1 if true, 0 if false
+    $.ajax({
+        type: 'POST',
+        url: '{{ route("updateChecked") }}',
+        data: {
+            _token: '{{ csrf_token() }}',
+            itemId: itemId,
+            isChecked: checkedValue // Send checkedValue to the server
+        },
+        success: function(response) {
+            console.log(response.message);
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
+    });
+}
+});
+
+
     $(document).ready(function(){
         $('.add-to-cart').click(function(e){
             e.preventDefault();

@@ -116,10 +116,10 @@ class BasketsController extends Controller
 
     public function checkoutCart()
     {
-             $cartItems = Basket::where('user_id', auth()->id())
-                                ->where('status', 'active')
-                                
-                                ->get();
+        $cartItems = Basket::where('user_id', auth()->id())
+                            ->where('status', 'active')
+                            ->where('checked', 1)
+                            ->get();
 
              foreach ($cartItems as $item) {
                  // Retrieve the product based on the product_id stored in the basket
@@ -130,6 +130,19 @@ class BasketsController extends Controller
              }
 
              return view('frontend.home.checkout', ['cartItems' => $cartItems]);
+    }
+
+    public function updateChecked(Request $request)
+    {
+        $itemId = $request->itemId;
+        $isChecked = $request->isChecked;
+    
+        // Update the checked status in the database
+        $basket = Basket::findOrFail($itemId);
+        $basket->checked = $isChecked;
+        $basket->save();
+    
+        return response()->json(['message' => 'Checked status updated successfully']);
     }
 
 
