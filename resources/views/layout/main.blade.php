@@ -122,10 +122,29 @@
              });
         });
 
-        
+        $(document).on('click', '.remove-checkout', function(e) {
+             e.preventDefault();
+             var itemId = $(this).data('id'); 
+             $.ajax({
+                 type: 'POST',
+                 url: '{{ route("updateChecked") }}',
+                 data: {
+                     _token: '{{ csrf_token() }}',
+                     itemId: itemId,
+                     isChecked: 0 // Set isChecked to 0 to indicate unchecked
+                 },
+                 success: function(response) {
+                    $('#product-card-' + itemId).remove();
+                     toastr.success('Item removed from checkout');
+                 },
+                 error: function(xhr, status, error) {
+                     console.error(xhr.responseText);
+                 }
+             });
+        });
         
 
-        $(document).on('click', '.remove', function(e) {
+        $(document).on('click', '.remove-cart', function(e) {
             e.preventDefault();
             var itemId = $(this).data('id'); 
             $.ajax({
@@ -137,6 +156,7 @@
                 },
                 success: function(response) {
                     
+                   
                     updateMiniModalCart();
                    
                 },
@@ -171,7 +191,7 @@
                         cartHtml += '</div>';
                         cartHtml += '<h5><strong>₹ ' + item.total + '</strong></h5>';
                         cartHtml += '</div>';
-                        cartHtml += '<a href="" class=" remove"  data-id="' + item.id + '"><i class="tf-ion-close"></i></a>';
+                        cartHtml += '<a href="" class="remove remove-cart"  data-id="' + item.id + '"><i class="tf-ion-close"></i></a>';
                         cartHtml += '</div><!-- / Cart Item -->';
 
                         // Add item's total price to the total
@@ -213,6 +233,7 @@
                     
                     $row.remove();
                     updateMiniModalCart();
+                    toastr.success('Item removed from cart');
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr.responseText);

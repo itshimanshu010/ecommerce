@@ -81,15 +81,15 @@
                   <div class="block">
                      <h4 class="widget-title">Order Summary</h4>
                      @foreach($cartItems as $item)
-                     <div class="media product-card">
+                     <div class="media product-card" id="product-card-{{ $item->id }}">
                          <a class="pull-left" href="product-single.html">
                              <img width="10px" class="media-object" src="{{ $item->image }}" alt="Image" />
                          </a>
                          <div class="media-body">
                              <h4 class="media-heading"><a href="product-single.html">{{ $item->title }}</a></h4>
-                             <p class="price">{{ $item->quantity }} x ${{ $item->price }}</p>
+                             <p class="price">{{ $item->quantity }} x ₹ {{ $item->unit_price }}</p>
                              <!-- Add a remove button or link -->
-                             <span class="remove" data-id="{{ $item->id }}">Remove</span>
+                             <span class="remove remove-checkout" data-id="{{ $item->id }}">Remove</span>
                          </div>
                      </div>
                      @endforeach
@@ -99,19 +99,19 @@
                      <ul class="summary-prices">
                         <li>
                            <span>Subtotal:</span>
-                           <span class="price">$190</span>
-                        </li>
-                        <li>
+                           <span id="subtotal" class="price"></span>
+                       </li>
+                       <li>
                            <span>Shipping:</span>
-                           <span>Free</span>
-                        </li>
-                     </ul>
-                     <div class="summary-total">
-                        <span>Total</span>
-                        <span>$250</span>
-                     </div>
+                           <span id="shipping-charge">Free</span> <!-- Assuming initial shipping charge is free -->
+                       </li>
+                   </ul>
+                   <div class="summary-total">
+                       <span>Total</span>
+                       <span id="total-price">$250</span> <!-- Initial total price -->
+                   </div>
                      <div class="verified-icon">
-                        <img src="images/shop/verified.png">
+                        <img src="{{ asset('public/frontend/images/shop/verified.png') }}">
                      </div>
                   </div>
                </div>

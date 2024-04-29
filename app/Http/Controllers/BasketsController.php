@@ -145,6 +145,31 @@ class BasketsController extends Controller
         return response()->json(['message' => 'Checked status updated successfully']);
     }
 
+    public function updateCheckoutSummary()
+    {
+                 // Retrieve checked items from the database
+            $checkedItems = Basket::where('checked', 1)->get();
+
+            // Calculate subtotal, shipping, and total based on the checked items
+            $subtotal = 0;
+            foreach ($checkedItems as $item) {
+                $subtotal += $item->total;
+            }
+
+            // Calculate shipping charge
+            $shipping = $subtotal < 500 ? 49 : 0;
+
+            // Calculate total
+            $total = $subtotal + $shipping;
+
+            // Return JSON response with updated values
+            return response()->json([
+                'subtotal' => $subtotal,
+                'shipping' => $shipping,
+                'total' => $total
+            ]);
+    }
+
 
 
 

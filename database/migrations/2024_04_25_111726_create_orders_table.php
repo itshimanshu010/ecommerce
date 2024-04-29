@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('order_id')->unique();
             $table->string('transaction_id')->nullable();
-            $table->decimal('subtotal', 8, 2);
-            $table->decimal('tax', 8, 2);
-            $table->decimal('shipping_charge', 8, 2);
-            $table->decimal('total', 8, 2);
-            $table->string('status');                                
+            $table->string('payment_id')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->nullable();
+            $table->decimal('subtotal', 8, 2)->nullable();
+            $table->decimal('tax', 8, 2)->nullable();
+            $table->decimal('shipping_charge', 8, 2)->nullable();
+            $table->decimal('total', 8, 2)->nullable();
+            $table->string('status')->nullable();                                
             $table->timestamps();
 
          
