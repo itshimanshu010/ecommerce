@@ -76,7 +76,7 @@
                     @endforeach
                 </tbody>
                 </table>
-                <a href="{{ route('checkoutCart') }}" class="btn btn-main pull-right">Proceed to Checkout</a>
+                <a href="{{ route('checkoutCart') }}" class="btn btn-main pull-right" id="checkout-btn">Proceed to Checkout</a>
               </form>
             </div>
           </div>

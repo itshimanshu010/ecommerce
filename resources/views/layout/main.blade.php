@@ -70,6 +70,7 @@
             var productId = $(this).data('id');
             $('#product-modal-' + productId).modal('show');
         });
+        
     });
 
     $(document).ready(function() {
@@ -137,6 +138,11 @@
                     $('#product-card-' + itemId).remove();
                     updateCheckoutSummary();
                      toastr.success('Item removed from checkout');
+                     var totalCharge = parseFloat($('#totalPlaceholder').text().replace('₹ ', ''));
+                    
+                     if ($('.product-card').length === 0) {
+                        window.location.href = '{{ route("cart") }}';
+                    }
                  },
                  error: function(xhr, status, error) {
                      console.error(xhr.responseText);
@@ -264,6 +270,17 @@
    
     $(document).ready(function() {
         updateCheckoutSummary();
+
+        $('#checkout-btn').click(function() {
+            // Check if any checkboxes are checked
+            var selectedItems = $('input[type="checkbox"]:checked').length;
+            if (selectedItems === 0) {
+                toastr.error('Please select at least one item to proceed to checkout.');
+                return false;
+            }
+        });
+
+        
     });
 
 </script>  
