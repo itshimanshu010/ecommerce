@@ -73,31 +73,31 @@
     });
 
     $(document).ready(function() {
-    $('input[type="checkbox"]').change(function() {
-        var itemId = $(this).val();
-        var isChecked = $(this).is(':checked');
-        updateChecked(itemId, isChecked);
-    });
+         $('input[type="checkbox"]').change(function() {
+             var itemId = $(this).val();
+             var isChecked = $(this).is(':checked');
+             updateChecked(itemId, isChecked);
+         });
 
-    function updateChecked(itemId, isChecked) {
-    var checkedValue = isChecked ? 1 : 0; // Convert isChecked to 1 if true, 0 if false
-    $.ajax({
-        type: 'POST',
-        url: '{{ route("updateChecked") }}',
-        data: {
-            _token: '{{ csrf_token() }}',
-            itemId: itemId,
-            isChecked: checkedValue // Send checkedValue to the server
-        },
-        success: function(response) {
-            console.log(response.message);
-        },
-        error: function(xhr, status, error) {
-            console.error(error);
+        function updateChecked(itemId, isChecked) {
+            var checkedValue = isChecked ? 1 : 0; // Convert isChecked to 1 if true, 0 if false
+            $.ajax({
+                type: 'POST',
+                url: '{{ route("updateChecked") }}',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    itemId: itemId,
+                    isChecked: checkedValue // Send checkedValue to the server
+                },
+                success: function(response) {
+                    console.log(response.message);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
         }
     });
-}
-});
 
 
     $(document).ready(function(){
@@ -119,7 +119,7 @@
                 error: function(xhr, status, error) {
                     console.error(xhr.responseText);
                 }
-             });
+            });
         });
 
         $(document).on('click', '.remove-checkout', function(e) {
@@ -135,12 +135,13 @@
                  },
                  success: function(response) {
                     $('#product-card-' + itemId).remove();
+                    updateCheckoutSummary();
                      toastr.success('Item removed from checkout');
                  },
                  error: function(xhr, status, error) {
                      console.error(xhr.responseText);
                  }
-             });
+            });
         });
         
 
@@ -154,9 +155,7 @@
                     _token: '{{ csrf_token() }}',
                     basket_id: itemId
                 },
-                success: function(response) {
-                    
-                   
+                success: function(response) {                   
                     updateMiniModalCart();
                    
                 },
@@ -217,9 +216,8 @@
             });
         }
 
-    $(document).on('click', '.product-remove', function(e) {
-
-        e.preventDefault();
+        $(document).on('click', '.product-remove', function(e) {
+            e.preventDefault();
             var itemId = $(this).data('id'); 
             var $row = $(this).closest('tr');
             $.ajax({
@@ -239,11 +237,33 @@
                     console.error(xhr.responseText);
                 }
             });
-        
-    }); 
-
+        }); 
 
         updateMiniModalCart();
+        
+        
+    });
+
+    function updateCheckoutSummary() {
+     
+    $.ajax({
+        type: 'GET',
+        url: '{{ route("updateCheckoutSummary") }}',
+        success: function(response) {
+            console.log('Received response:', response);
+            $('#subtotalPlaceholder').text('₹ ' + response.subtotal.toFixed(2));
+            $('#shippingPlaceholder').text('₹ ' + response.shipping.toFixed(2));
+            $('#totalPlaceholder').text('₹ ' + response.total.toFixed(2));
+        },
+        error: function(xhr, status, error) {
+            console.error('Error:', error);
+        }
+    });
+    }
+
+   
+    $(document).ready(function() {
+        updateCheckoutSummary();
     });
 
 </script>  

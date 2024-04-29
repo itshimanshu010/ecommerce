@@ -98,18 +98,18 @@
                      </div>
                      <ul class="summary-prices">
                         <li>
-                           <span>Subtotal:</span>
-                           <span id="subtotal" class="price"></span>
-                       </li>
-                       <li>
-                           <span>Shipping:</span>
-                           <span id="shipping-charge">Free</span> <!-- Assuming initial shipping charge is free -->
-                       </li>
-                   </ul>
-                   <div class="summary-total">
-                       <span>Total</span>
-                       <span id="total-price">$250</span> <!-- Initial total price -->
-                   </div>
+                            <span>Subtotal:</span>
+                            <span id="subtotalPlaceholder">calculating..</span>
+                        </li>
+                        <li>
+                            <span>Shipping:</span>
+                            <span id="shippingPlaceholder">calculating..</span>
+                        </li>
+                    </ul>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span id="totalPlaceholder">calculating..</span>
+                    </div>
                      <div class="verified-icon">
                         <img src="{{ asset('public/frontend/images/shop/verified.png') }}">
                      </div>

@@ -31,6 +31,7 @@ Route::get('/remove-cart', [BasketsController::class, 'removeItem'])->name('bask
 Route::delete('/remove-cart-item', [BasketsController::class, 'removeCartItem'])->name('removeCartItem');
 Route::post('/update-checked', [BasketsController::class, 'updateChecked'])->name('updateChecked');
 Route::get('/checkoutCart', [BasketsController::class, 'checkoutCart'])->name('checkoutCart');
+Route::get('/update-checkout-summary', [BasketsController::class, 'updateCheckoutSummary'])->name('updateCheckoutSummary');
 
 
 
