@@ -82,11 +82,11 @@
                      <h4 class="widget-title">Order Summary</h4>
                      @foreach($cartItems as $item)
                      <div class="media product-card" id="product-card-{{ $item->id }}">
-                         <a class="pull-left" href="product-single.html">
+                         <a class="pull-left" href="#!">
                              <img width="10px" class="media-object" src="{{ $item->image }}" alt="Image" />
                          </a>
                          <div class="media-body">
-                             <h4 class="media-heading"><a href="product-single.html">{{ $item->title }}</a></h4>
+                             <h4 class="media-heading"><a href="#!">{{ $item->title }}</a></h4>
                              <p class="price">{{ $item->quantity }} x ₹ {{ $item->unit_price }}</p>
                              <!-- Add a remove button or link -->
                              <span class="remove remove-checkout" data-id="{{ $item->id }}">Remove</span>
