@@ -9,7 +9,7 @@ class ForgotPasswordController extends Controller
     public function forgotPassword()
     {   
         $user = new User;
-        return view('login.forgotpassword',compact('user'));
+        return view('frontend.login.forgotpassword',compact('user'));
     }
 
     public function forgotPasswordpost(Request $request)

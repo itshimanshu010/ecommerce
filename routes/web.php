@@ -8,6 +8,7 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\BasketsController;
+use App\Http\Controllers\CheckoutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,8 +31,8 @@ Route::get('/remove-cart', [BasketsController::class, 'removeItem'])->name('bask
 
 Route::delete('/remove-cart-item', [BasketsController::class, 'removeCartItem'])->name('removeCartItem');
 Route::post('/update-checked', [BasketsController::class, 'updateChecked'])->name('updateChecked');
-Route::get('/checkoutCart', [BasketsController::class, 'checkoutCart'])->name('checkoutCart');
-Route::get('/update-checkout-summary', [BasketsController::class, 'updateCheckoutSummary'])->name('updateCheckoutSummary');
+Route::get('/checkoutCart', [CheckoutController::class, 'checkoutCart'])->name('checkoutCart');
+Route::get('/update-checkout-summary', [CheckoutController::class, 'updateCheckoutSummary'])->name('updateCheckoutSummary');
 
 
 

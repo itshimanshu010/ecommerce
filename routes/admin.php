@@ -13,27 +13,21 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\ProductController;
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
+
     Route::get('/',[LoginController::class,'showLoginForm'])->name('showLoginForm');
     Route::post('adminlogin',[LoginController::class,'adminLogin'])->name('adminLogin');
-    
     Route::get('adminReset',[ResetPasswordController::class,'adminReset'])->name('adminReset');
-    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
-                ->name('password.email');
-
-                Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
-                ->name('password.reset');
-
-    Route::post('reset-password', [NewPasswordController::class, 'store'])
-                ->name('password.store');
+    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
+    Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
+    Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.store');
     
 });
 
 
 Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function () {
+    
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard.index');
    
-
-    // 6 route
 
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
     Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');
@@ -74,9 +68,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
     Route::get('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
-    Route::get('/products/{id}/variants/create', [ProductController::class, 'showVariantCreateForm'])
-    ->name('products.variants');
-
+    Route::get('/products/{id}/variants/create', [ProductController::class, 'showVariantCreateForm'])->name('products.variants');
     Route::post('/products/{id}/variants/store', [ProductController::class, 'storeVariant'])->name('products.storevariant');
     
 
