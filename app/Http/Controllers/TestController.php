@@ -3,30 +3,55 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Kreait\Firebase\Auth;
 
-private $database;
+use Illuminate\Support\Facades\Auth as LaravelAuth;
 
-public function __construct()
-{
-    $this->database = \App\Services\FirebaseService::connect();
-}
+
 
 class TestController extends Controller
 {
-    public function create(Request $request) 
+   
+    private $firebaseAuth;
+
+    public function __construct(Auth $firebaseAuth)
     {
-    $this->database
-        ->getReference('test/blogs/' . $request['title'])
-        ->set([
-            'title' => $request['title'] ,
-            'content' => $request['content']
+        $this->firebaseAuth = $firebaseAuth;
+    }
+    
+    public function index()
+    {
+        return view('test.use');
+    }
+
+    public function createUserrr(Request $request)
+    {
+        // Validate the form data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users|max:255',
+            'password' => 'required|confirmed|min:8',
         ]);
-
-    return response()->json('blog has been created');
+    
+        // Create a new user in Firebase Authentication
+        $userProperties = [
+            'email' => $validatedData['email'],
+            'emailVerified' => false,
+            'password' => $validatedData['password'],
+            'displayName' => $validatedData['name'],
+        ];
+    
+        try {
+            $createdUser = $this->firebaseAuth->createUser($userProperties);
+    
+            // User creation successful, you can log the user in or perform additional actions
+            LaravelAuth::loginUsingId($createdUser->uid);
+    
+            return redirect()->route('home')->with('success', 'Registration successful!');
+        } catch (\Exception $e) {
+            // Handle user creation error
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
-
-    public function index() 
-    {
-    return response()->json($this->database->getReference('test/blogs')->getValue());
-    }
+    
 }

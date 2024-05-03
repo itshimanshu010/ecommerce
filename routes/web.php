@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\BasketsController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\TestController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,6 +69,8 @@ Route::get('/userDashboard', [AuthController::class,'userDashboard'])->name('use
 // Route::get('/update-checkout-summary', [CheckoutController::class, 'updateCheckoutSummary'])->name('updateCheckoutSummary');
 
 
+Route::get('/users',[TestController::class,'index']);
+Route::post('/UseRregister', [TestController::class, 'createUserrr'])->name('firebaseRegister');
 
 
 
