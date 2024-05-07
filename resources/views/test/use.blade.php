@@ -8,41 +8,41 @@
         <div class="block text-center" style="margin-top: 50px;">
           
           <h2 class="text-center">Create Your Account</h2>
-          <form method="post" action="{{ route('firebaseRegister') }}">
+          <form method="POST" action="{{ route('saveUser') }}">
           @csrf
             <div class="form-group">
-              <input id="name" class="form-control" type="text"  name="name" :value="old('name')"   placeholder="Full Name">
-              @if($errors->has("name"))
+              <input id="name" class="form-control" type="text"  name="name"   placeholder="Full Name">
+                            @if($errors->has("name"))
                             <span class="error-message">{{ $errors->first('name') }}</span>
                             @endif
             </div>
             
             <div class="form-group">
-              <input  id="email" name="email" :value="old('email')"   type="email" class="form-control"  placeholder="Email">
-              @if($errors->has("email"))
+              <input  id="email" name="email"  type="email" class="form-control"  placeholder="Email">
+                            @if($errors->has("email"))
                             <span class="error-message">{{ $errors->first('email') }}</span>
                             @endif
             </div>
+
             <div class="form-group">
               <input type="password" name="password" class="form-control"  placeholder="Password">
               @if($errors->has("password"))
                             <span class="error-message">{{ $errors->first('password') }}</span>
-                            @endif
+               @endif
             </div>
 
             <div class="form-group">
               <input name="password_confirmation"  id="password_confirmation"  type="password" class="form-control"  placeholder="Confirm Password">
               @if($errors->has("password"))
-                                    <span class="error-message">{{ $errors->first('password') }}</span>
-                                @endif
+                              <span class="error-message">{{ $errors->first('password') }}</span>
+              @endif
             </div>
 
             <div class="text-center">
               <button class="btn btn-main text-center">Register</button>
             </div>
           </form>
-          <p class="mt-20">Already hava an account ?<a href="{{ route('showUserLoginForm') }}"> Login</a></p>
-          <p><a href="{{ route('forgotPassword') }}"> Forgot your password?</a></p>
+          
         </div>
       </div>
     </div>

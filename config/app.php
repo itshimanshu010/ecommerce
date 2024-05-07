@@ -195,8 +195,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
-        Kreait\Laravel\Firebase\ServiceProvider::class,
-        App\Providers\FirebaseServiceProvider::class,
+    
     
         
     ],

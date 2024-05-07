@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\BasketsController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\Firebase\UserFireController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,8 +70,8 @@ Route::get('/userDashboard', [AuthController::class,'userDashboard'])->name('use
 // Route::get('/update-checkout-summary', [CheckoutController::class, 'updateCheckoutSummary'])->name('updateCheckoutSummary');
 
 
-Route::get('/users',[TestController::class,'index']);
-Route::post('/UseRregister', [TestController::class, 'createUserrr'])->name('firebaseRegister');
+Route::get('/FirebaseUsers',[UserFireController::class,'index'])->name('FirebaseUsers');
+Route::post('/saveUser', [UserFireController::class, 'saveUser'])->name('saveUser');
 
 
 
