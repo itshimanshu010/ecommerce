@@ -237,6 +237,9 @@
                     
                     $row.remove();
                     updateMiniModalCart();
+                    if ($('tbody tr').length === 0) {
+                window.location.href = '{{ route("shopPage") }}';
+            }
                     toastr.success('Item removed from cart');
                 },
                 error: function(xhr, status, error) {
