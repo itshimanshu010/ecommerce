@@ -9,7 +9,9 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\BasketsController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TestController;
+
 use App\Http\Controllers\Firebase\UserFireController;
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +40,9 @@ Route::get('/show-cart',[BasketsController::class,'showCart'])->name('show-cart'
 Route::get('/remove-cart', [BasketsController::class, 'removeItem'])->name('basket.remove');
 Route::delete('/remove-cart-item', [BasketsController::class, 'removeCartItem'])->name('removeCartItem');
 Route::post('/update-checked', [BasketsController::class, 'updateChecked'])->name('updateChecked');
+
+Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('place-order');
+
 
 Route::get('registerform',[AuthController::class,'showRegisterForm'])->name('showRegisterForm');
 Route::post('register', [AuthController::class, 'register'])->name('register');
