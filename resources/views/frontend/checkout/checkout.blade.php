@@ -22,6 +22,7 @@
    <div class="checkout shopping">
       <div class="container">
        <form class="checkout-form" id="checkout-form" action="{{ route('place-order') }}" method="POST">
+         @csrf
          <div class="row">
             <div class="col-md-8">
                <div class="block billing-details">

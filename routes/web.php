@@ -40,6 +40,8 @@ Route::get('/show-cart',[BasketsController::class,'showCart'])->name('show-cart'
 Route::get('/remove-cart', [BasketsController::class, 'removeItem'])->name('basket.remove');
 Route::delete('/remove-cart-item', [BasketsController::class, 'removeCartItem'])->name('removeCartItem');
 Route::post('/update-checked', [BasketsController::class, 'updateChecked'])->name('updateChecked');
+Route::post('/updateCartItemQuantity', 'BasketsController@updateCartItemQuantity')->name('updateCartItemQuantity');
+
 
 Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('place-order');
 
