@@ -123,26 +123,6 @@ class BasketsController extends Controller
         ]);
     }
 
-    public function updateCartItemQuantity(Request $request)
-{
-    $itemId = $request->itemId;
-    $quantity = $request->quantity;
-    
-    // Retrieve the basket item
-    $cartItem = Basket::findOrFail($itemId);
-
-    // Update the quantity
-    $cartItem->quantity = $quantity;
-
-    // Calculate and update the total price
-    $cartItem->total = $quantity * $cartItem->unit_price;
-
-    // Save the changes to the database
-    $cartItem->save();
-
-    return response()->json(['message' => 'Quantity updated successfully']);
-}
-
    
 
     /**
