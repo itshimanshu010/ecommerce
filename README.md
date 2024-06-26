@@ -9,6 +9,7 @@
 </p>
 Installation
 Laravel 9, Laravel Breeze
+
 -----------------------------------------------
 # Admin Dashboard
 ![dsh](https://github.com/itshimanshu010/ecommerce/assets/55348957/f624392a-1e4b-43e7-a088-76362f32e187)
