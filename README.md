@@ -7,7 +7,8 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
-
+Installation
+Laravel 9, Laravel Breeze
 -----------------------------------------------
 # Admin Dashboard
 ![dsh](https://github.com/itshimanshu010/ecommerce/assets/55348957/f624392a-1e4b-43e7-a088-76362f32e187)
