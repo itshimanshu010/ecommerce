@@ -8,21 +8,15 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+-----------------------------------------------
+# Admin Dashboar
+![dsh](https://github.com/itshimanshu010/ecommerce/assets/55348957/f624392a-1e4b-43e7-a088-76362f32e187)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Create a User
+![cau](https://github.com/itshimanshu010/ecommerce/assets/55348957/948ce607-72eb-43d4-b50c-f869f42535e0)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# User Side
+![Shop](https://github.com/itshimanshu010/ecommerce/assets/55348957/af4e5b0a-23c4-4bc5-ab4e-7b4d4f385de9)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
+# Cart
+![cart](https://github.com/itshimanshu010/ecommerce/assets/55348957/205d8246-c5b9-4030-91eb-d0068dde4b0b)
